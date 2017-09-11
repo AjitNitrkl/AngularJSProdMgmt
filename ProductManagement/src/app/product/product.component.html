@@ -1,0 +1,10 @@
+<p>
+  <!-- with out json it will show as object -->
+ Welcome to Product page the product list 
+
+ {{product}}
+ <app-productlist [productlist]="products" (getProduct)="getProductFromChild($event)"></app-productlist>
+ 
+<app-productdetails [productDetailsTitle]="productTitle" ></app-productdetails>
+</p>
+ 

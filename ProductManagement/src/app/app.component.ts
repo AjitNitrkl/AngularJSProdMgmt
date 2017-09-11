@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  title = 'ProductManagement';
+  company = 'CTS';
+  isVisisble=false;
+
+
+toggle(){
+  this.isVisisble = !this.isVisisble;
 }
+}
+
