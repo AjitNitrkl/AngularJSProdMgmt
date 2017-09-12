@@ -4,7 +4,14 @@
 
  {{product}}
  <app-productlist [productlist]="products" (getProduct)="getProductFromChild($event)"></app-productlist>
+
+ <!-- view children will fire no of times based on no. of attributes   of product list-->
+ <!-- <app-productlist [productlist]="products" (getProduct)="getProductFromChild($event)"></app-productlist>
+ <app-productlist [productlist]="products" (getProduct)="getProductFromChild($event)"></app-productlist> -->
  
 <app-productdetails [productDetailsTitle]="productTitle" ></app-productdetails>
+
+
+<button class="btn btn-primary"  (click)="getProduct()">Get Product From Parent</button>
 </p>
  
