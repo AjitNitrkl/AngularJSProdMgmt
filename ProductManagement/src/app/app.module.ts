@@ -6,12 +6,13 @@ import { ProductlistComponent } from './product/productlist/productlist.componen
 import { ProductdetailsComponent } from './product/productdetails/productdetails.component';
 import { ProductService} from './service/product/product.service';
 import {APP_CONFIG,API_CONFIG} from './service/apiProvider/appConfig';
-import { AppConfig } from './service/apiProvider/IAppConfig'
+import { AppConfig } from './service/apiProvider/IAppConfig';
+import {FormsModule} from '@angular/forms'
 
 
 @NgModule({
   declarations: [AppComponent, ProductComponent, ProductlistComponent, ProductdetailsComponent],
-  imports: [BrowserModule],
+  imports: [BrowserModule,FormsModule],
   //removed productservice from prov arrays then it is no more singleton. same instance across
   providers:[{provide:ProductService, useClass:ProductService},
     {provide:APP_CONFIG, useValue: API_CONFIG}
