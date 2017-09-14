@@ -1,9 +1,11 @@
 <p>
   <!-- with out json it will show as object -->
  Welcome to Product page the product list 
+</p>
+ <!-- {{product | json}} -->
 
- {{product}}
- <app-productlist [productlist]="products" (getProduct)="getProductFromChild($event)"></app-productlist>
+
+ <!-- <app-productlist [productlist]="products" (getProduct)="getProductFromChild($event)"></app-productlist> -->
 
  <!-- view children will fire no of times based on no. of attributes   of product list-->
  <!-- <app-productlist [productlist]="products" (getProduct)="getProductFromChild($event)"></app-productlist>
@@ -11,8 +13,34 @@
  
 <!-- <app-productdetails [productDetailsTitle]="productTitle" ></app-productdetails>
 <button class="btn btn-primary"  (click)="getProduct()">Get Product From Parent</button> -->
+<!-- Template Drive Forms-->
+
+<!-- html validation disabled can enable angular validation using required -->
+<!-- {{productForm.valid | json}}
+{{productForm.errors}} -->
+
+<form #productForm="ngForm" class="col-md-7" (submit)="submit()" novalidate>
+<div class="form-group">
+<input type="number"   name="id" class="form-control" required name="id" [(ngModel)]="product.id" 
+   placeholder="ID" #productid="ngModel" />
+<!--CSS validation is much cleaner -->
+    <!-- <div clas="alert alert-danger" [hidden]="productid.valid || productid.pristine ">
+     Please provide ID
+     </div>   -->
+</div>
+<div class="form-group">
+    <input type="text" minlength="4" maxlength="8" name="name" required class="form-control"  [(ngModel)]="product.name"  
+  placeholder="Name"  #productname="ngModel"/> 
+</div>
+<div class="form-group">
+  <input type="number" class="form-control" required name="price" [(ngModel)]="product.price"  
+  placeholder="Price"  #productprice="ngModel"/>
+</div>
+<div class="form-group">
+<button type="submit"  [disabled]="productForm.invalid" class="brn btn-primary">Submit</button>
+</div>
+
+</form>
 
 
 
-</p>
- 

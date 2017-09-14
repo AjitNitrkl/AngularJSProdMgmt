@@ -22,6 +22,7 @@ export class AppComponent {
   //or else the value will be changed but to define an endpoint it has to be a const so use value provider
   constructor(private prodService:ProductService,  @Inject(APP_CONFIG) config: AppConfig ){
     console.log('apiEndPoint -'+config.apiEndpoint);  
+
   }
 
 
