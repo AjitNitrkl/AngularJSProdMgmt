@@ -19,6 +19,8 @@ import { LoginComponent } from './login/login.component'
 import { LoginService } from './service/login/login.service';
 import { FilterarrayPipe } from './common/filterarray.pipe';
 import { PostComponent } from './post/post.component';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {ApiInterceptorService} from './service/httpinterceptor/api-interceptor.service'
 
 
 
@@ -28,8 +30,12 @@ import { PostComponent } from './post/post.component';
   imports: [BrowserModule, SharedModule, OrderModule, RoutingModule],
   //removed productservice from prov arrays then it is no more singleton. same instance across
   providers: [{ provide: ProductService, useClass: ProductService },
-  { provide: APP_CONFIG, useValue: API_CONFIG }, LoginService, AuthGuard
+  { provide: APP_CONFIG, useValue: API_CONFIG }, LoginService, AuthGuard,{
+    provide:HTTP_INTERCEPTORS, useClass:ApiInterceptorService, multi:true
+  }
   ],
+
+  //with out multi:true you will get --Mixing multi and non multi provider is not possible for token InjectionToken_HTTP_INTERCEPTORS
   //below is shortcut of above,  if you want to use another service in place of existing service so in
   //that case only change in above will suffic, no need to change where ever the class is injected
   //useclass will  create new instance useExisting will not create new instances
