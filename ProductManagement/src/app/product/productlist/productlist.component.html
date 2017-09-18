@@ -2,6 +2,7 @@
   Welcome to Product List Page
 </p>
 
+<input type="text" name="price"  [(ngModel)]="price" required class="form-control" /> 
 
  <table class="table">
 
@@ -10,26 +11,30 @@
       ID
     </th>
     <th>
-      Name
     </th>
     <th>
       Price
     </th>
   </thead>
   <tbody>
-    <tr *ngFor="let product of productlist" >
+    <tr *ngFor="let product of productlist " >
       <td>
           {{product.id}}
       </td>
+      <!-- built in pipes upprecase/currency-->
       <td>
-        {{product.name}}
+        {{product.name | uppercase }}
       </td>
       <td>
-        {{product.price | currency}}
+        {{product.price | customcurrency:'INR'}}
       </td>
+      <td>
+         <button type="submit" [routerLink]="['/product',product.id]" class="btn btn-primary">Details</button>
+        </td>
       </tr>
   </tbody>
  </table> 
 
 
- <button class="btn btn-primary" (click)="getProducts()">Send Product</button>
+ <!-- <button class="btn btn-primary" (click)="getProducts()">Send Product</button> -->
+ <router-outlet></router-outlet>

@@ -1,20 +1,20 @@
-<div [hidden]="false" [innerHtml]="title" style="text-align:center"> 
+<div [hidden]="false" [innerHtml]="title" style="text-align:center">
   <!-- Property Binding & interpolation syntax -->
 </div>
 <!-- <input ng-hide="isVisible"  type="text" name="ID" placeholder="Hide"/> -->
 <div>
   <div>
-           Welcome to Angular JS  {{apps}} Project managed by {{title}} 
-  
-  </div>
-<!-- {{isVisisble}} -->
+    Welcome to Angular JS {{apps}} Project managed by {{title}}
 
-<!--banana syntax -->
-<!-- <button (click)="toggle()">Toggle</button> 
+  </div>
+  <!-- {{isVisisble}} -->
+
+  <!--banana syntax -->
+  <!-- <button (click)="toggle()">Toggle</button> 
 </div> -->
 
-<!-- Commented for Router impl-->
-<!-- <app-product></app-product>
+  <!-- Commented for Router impl-->
+  <!-- <app-product></app-product>
 
 <app-order></app-order> -->
 
@@ -22,22 +22,24 @@
 
 
   <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" routerLink='/welcome'>Product Management</a>
-    </div>
-    <ul class="nav navbar-nav">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" routerLink='/welcome'>Product Management</a>
+      </div>
+      <div class="pull-right">
+        <ul class="nav navbar-nav">
+          <li><button type="submit" class="btn navbar-btn btn-danger" name="logout" id="logout" value="Log Out">Log Out</button></li>
+        </ul>
+      </div>
+      <ul class="nav navbar-nav">
         <!-- <li class="active"><a href="#">Home</a></li> -->
         <li><a routerLink='/order'>Order</a></li>
         <li><a routerLink='/product'>Product</a></li>
-        
+        <li><a routerLink='/post'>Post</a></li>
+
       </ul>
-  </div>
-</nav>
+    </div>
+  </nav>
 
 
-
-
-
-
-<router-outlet></router-outlet>
+  <router-outlet></router-outlet>

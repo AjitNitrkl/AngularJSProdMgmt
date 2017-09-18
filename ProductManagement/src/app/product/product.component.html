@@ -37,10 +37,12 @@
   placeholder="Price"  #productprice="ngModel"/>
 </div>
 <div class="form-group">
-<button type="submit"  [disabled]="productForm.invalid" class="brn btn-primary">Submit</button>
+<button type="submit"  [disabled]="productForm.invalid" class="btn btn-primary">Submit</button>
 </div>
 
 </form>
 
 
+<hr>
+<app-productlist  [productlist]="products" ></app-productlist>
 

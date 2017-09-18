@@ -2,6 +2,8 @@ import { Component, OnInit , ViewChild, ViewChildren, QueryList} from '@angular/
 import {ProductlistComponent} from './productlist/productlist.component';
 import {ProductService} from '../service/product/product.service';
 import{Product} from '../service/product/product';
+import {ActivatedRoute} from '@angular/router';
+
 
 
 @Component({
@@ -9,10 +11,13 @@ import{Product} from '../service/product/product';
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css'],
   providers: [ProductService],
+
 })
 export class ProductComponent implements OnInit {
 
-  product:Product;
+product = new Product();
+price:number=200;
+products:Product[];
   //products: any[];
   // products: Product[];
   // productTitle:string='Product title from Parent';
@@ -23,7 +28,8 @@ export class ProductComponent implements OnInit {
   // @ViewChildren(ProductlistComponent)
   // productListComp : QueryList<ProductlistComponent>;
 
-  constructor(private productService:ProductService) {
+  constructor(private productService:ProductService, private route:ActivatedRoute,
+  private prodListcomp:ProductlistComponent) {
 
    }
 
@@ -33,8 +39,18 @@ export class ProductComponent implements OnInit {
   //   this.productListComp.forEach((data)=>data.getProducts());
   // }
 
+
+
   ngOnInit(){
-    this.product = new Product();
+    //this.product = new Product();
+    //this is for lazy loading
+   // this.route.data.subscribe((data)=>this.products = data['productList']);
+
+   // this.products=this.productService.getProducts().filter((products)=>products.price> this.prodListcomp.getFilteredPrice() );
+   //this.products=this.productService.getProducts();
+  //  console.log(price);
+  this.route.data.subscribe((data) => this.products = data['productList']);
+   
   }
 
   submit(){
@@ -58,6 +74,10 @@ export class ProductComponent implements OnInit {
   // getProductFromChild(product:string){
   //   this.product=product;
 
+  // }
+
+  // getPriceFromChild(price:number){
+  //   this.price=price;
   // }
 
 }

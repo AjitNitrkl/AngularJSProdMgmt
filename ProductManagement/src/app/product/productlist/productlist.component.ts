@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges,SimpleChanges } from '@angular/core';
-import { Product } from '../../service/product/product'
+import { Product } from '../../service/product/product';
+import {} from ''
 
 @Component({
   selector: 'app-productlist',
@@ -9,9 +10,11 @@ import { Product } from '../../service/product/product'
 export class ProductlistComponent implements OnInit , OnChanges {
   @Input() productlist:Product[];
   @Output() getProduct = new EventEmitter<string>();
+  //@Output() getPrice = new EventEmitter<number>();
+  price:number=0;
 
   constructor() { }
-
+ 
   
   ngOnChanges(changes:SimpleChanges){
     console.log('OnChanges Called');
@@ -29,6 +32,10 @@ export class ProductlistComponent implements OnInit , OnChanges {
     //this.getProduct.emit('hello from ProductList');
     //Emitters are always costly since you are using websockets
     console.log("Viewing Child Info");
+  }
+
+  getFilteredPrice(){
+    return this.price;
   }
 
 }
