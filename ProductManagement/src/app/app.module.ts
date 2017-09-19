@@ -20,16 +20,20 @@ import { LoginService } from './service/login/login.service';
 import { FilterarrayPipe } from './common/filterarray.pipe';
 import { PostComponent } from './post/post.component';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
-import {ApiInterceptorService} from './service/httpinterceptor/api-interceptor.service'
+import {ApiInterceptorService} from './service/httpinterceptor/api-interceptor.service';
+//import {productServiceFactory} from './service/product/productfactory';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 
 
 @NgModule({
   declarations: [AppComponent, PagenotfoundComponent, WelcomeComponent, LoginComponent, FilterarrayPipe, PostComponent],
-  imports: [BrowserModule, SharedModule, OrderModule, RoutingModule],
+  imports: [BrowserModule, SharedModule, OrderModule, RoutingModule,BrowserAnimationsModule],
   //removed productservice from prov arrays then it is no more singleton. same instance across
-  providers: [{ provide: ProductService, useClass: ProductService },
+  providers: [
+   // productServiceFactory,
+    { provide: ProductService, useClass: ProductService },
   { provide: APP_CONFIG, useValue: API_CONFIG }, LoginService, AuthGuard,{
     provide:HTTP_INTERCEPTORS, useClass:ApiInterceptorService, multi:true
   }

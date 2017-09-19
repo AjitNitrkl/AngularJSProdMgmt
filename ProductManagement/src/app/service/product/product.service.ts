@@ -21,8 +21,6 @@ export class ProductService {
    return  Observable.of(this.products);
   }
 
-  
-
   addProducts(){
     this.products.push(
       {
